@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Relocation Estimates - Perth to Osaka</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, system-ui, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #333;
+      overflow-x: hidden;
+    }
+    .container { max-width: 1400px; margin: 0 auto; padding: 20px; }
+    .header { text-align: center; color: white; padding: 40px 20px; background: rgba(0,0,0,0.2); border-radius: 20px; margin-bottom: 30px; backdrop-filter: blur(10px); }
+    .header h1 { font-size: 2.5em; margin-bottom: 10px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+    .header .subtitle { font-size: 1.2em; opacity: 0.95; }
+    .header .role { margin-top: 15px; font-size: 1.1em; color: #ffd700; }
+    .nav-tabs { display: flex; justify-content: center; gap: 10px; margin-bottom: 30px; flex-wrap: wrap; }
+    .nav-tab { padding: 12px 24px; background: white; border: none; border-radius: 10px; cursor: pointer; font-size: 16px; font-weight: 600; transition: all 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+    .nav-tab:hover { transform: translateY(-2px); box-shadow: 0 6px 12px rgba(0,0,0,0.15); }
+    .nav-tab.active { background: linear-gradient(135deg, #ffd700, #ffed4e); color: #333; }
+    .estimate-page { display: none; animation: fadeIn 0.5s; }
+    .estimate-page.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .estimate-card { background: white; border-radius: 20px; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+    .estimate-header { border-bottom: 3px solid #667eea; padding-bottom: 20px; margin-bottom: 30px; }
+    .estimate-title { font-size: 2em; color: #667eea; margin-bottom: 10px; }
+    .estimate-description { color: #666; font-size: 1.1em; font-style: italic; }
+    .summary-boxes { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 30px; }
+    .summary-box { background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); padding: 20px; border-radius: 15px; text-align: center; }
+    .summary-box.total { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }
+    .summary-label { font-size: 0.9em; opacity: 0.9; margin-bottom: 5px; }
+    .summary-amount { font-size: 1.5em; font-weight: bold; }
+    .breakdown-section { margin-bottom: 30px; }
+    .section-title { font-size: 1.3em; color: #667eea; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
+    .section-icon { width: 30px; height: 30px; background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; }
+    .breakdown-table { width: 100%; border-collapse: collapse; }
+    .breakdown-table th { background: #f5f7fa; padding: 12px; text-align: left; font-weight: 600; }
+    .breakdown-table td { padding: 10px 12px; border-bottom: 1px solid #eee; }
+    .breakdown-table tr:hover { background: #f8f9ff; }
+    .amount-range { display: flex; justify-content: space-between; gap: 10px; }
+    .amount-low { color: #22c55e; font-weight: 600; }
+    .amount-high { color: #ef4444; font-weight: 600; }
+    .key-considerations { background: #fef3c7; border-left: 4px solid #f59e0b; padding: 20px; border-radius: 10px; margin-top: 30px; }
+    .key-considerations h3 { color: #d97706; margin-bottom: 10px; }
+    .key-considerations ul { margin-left: 20px; }
+    .key-considerations li { margin: 8px 0; color: #92400e; }
+    .timeline-note { background: #e0e7ff; border-left: 4px solid #4f46e5; padding: 15px; border-radius: 10px; margin-top: 20px; }
+    .timeline-note h4 { color: #4f46e5; margin-bottom: 5px; }
+    .timeline-note p { color: #4338ca; }
+    @media (max-width: 768px) {
+      .header h1 { font-size: 1.8em; }
+      .estimate-title { font-size: 1.5em; }
+      .nav-tab { padding: 10px 16px; font-size: 14px; }
+      .container { padding: 10px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>🗾 Perth to Osaka Relocation Estimates</h1>
+      <div class="subtitle">NBC Universal • Asia Pacific Region</div>
+      <div class="role">Director of IT Operations - Asia Region</div>
+    </div>
+    <div class="nav-tabs">
+      <button class="nav-tab active" onclick="showEstimate(1)">Estimate 1: Comprehensive</button>
+      <button class="nav-tab" onclick="showEstimate(2)">Estimate 2: Excluding Ongoing Support</button>
+      <button class="nav-tab" onclick="showEstimate(3)">Estimate 3: 3-Month Temporary Housing</button>
+    </div>
+
+    <!-- Estimate 1 -->
+    <div id="estimate1" class="estimate-page active">
+      <div class="estimate-card">
+        <div class="estimate-header">
+          <h2 class="estimate-title">Comprehensive Package</h2>
+          <p class="estimate-description">Including ongoing schooling, housing support, and all relocation services</p>
+        </div>
+        <div class="summary-boxes">
+          <div class="summary-box"><div class="summary-label">One-Time Costs</div><div class="summary-amount">$43.5K - $78.5K</div></div>
+          <div class="summary-box"><div class="summary-label">Annual Support</div><div class="summary-amount">$57.5K - $82.5K</div></div>
+          <div class="summary-box total"><div class="summary-label">Year 1 Total</div><div class="summary-amount">$101K - $161K</div></div>
+        </div>
+        <div class="breakdown-section">
+          <h3 class="section-title"><span class="section-icon">📦</span>One-Time Relocation Costs</h3>
+          <table class="breakdown-table">
+            <thead><tr><th>Item</th><th>Cost Range (USD)</th></tr></thead>
+            <tbody>
+              <tr><td>Household Shipping (20-30m³)</td><td><div class="amount-range"><span class="amount-low">$8,000</span><span class="amount-high">$14,000</span></div></td></tr>
+              <tr><td>Furniture Allowance (Japan)</td><td><div class="amount-range"><span class="amount-low">$5,000</span><span class="amount-high">$10,000</span></div></td></tr>
+              <tr><td>Airfare (3 people, business)</td><td><div class="amount-range"><span class="amount-low">$9,000</span><span class="amount-high">$15,000</span></div></td></tr>
+              <tr><td>Temporary Accommodation (1 month)</td><td><div class="amount-range"><span class="amount-low">$3,000</span><span class="amount-high">$5,000</span></div></td></tr>
+              <tr><td>Pet Relocation (1 cavoodle)</td><td><div class="amount-range"><span class="amount-low">$4,000</span><span class="amount-high">$6,000</span></div></td></tr>
+              <tr><td>Pet Quarantine & Documentation</td><td><div class="amount-range"><span class="amount-low">$1,500</span><span class="amount-high">$2,500</span></div></td></tr>
+              <tr><td>Tax Consultation (AU-JP)</td><td><div class="amount-range"><span class="amount-low">$3,000</span><span class="amount-high">$6,000</span></div></td></tr>
+              <tr><td>Cultural/Language Orientation</td><td><div class="amount-range"><span class="amount-low">$1,500</span><span class="amount-high">$3,000</span></div></td></tr>
+              <tr><td>Home Finding Service</td><td><div class="amount-range"><span class="amount-low">$3,000</span><span class="amount-high">$5,000</span></div></td></tr>
+              <tr><td>Settling-in Services</td><td><div class="amount-range"><span class="amount-low">$2,000</span><span class="amount-high">$4,000</span></div></td></tr>
+              <tr><td>School Search/Enrollment</td><td><div class="amount-range"><span class="amount-low">$1,000</span><span class="amount-high">$2,500</span></div></td></tr>
+              <tr><td>Transportation Setup</td><td><div class="amount-range"><span class="amount-low">$500</span><span class="amount-high">$1,500</span></div></td></tr>
+              <tr><td>Emergency Fund</td><td><div class="amount-range"><span class="amount-low">$2,000</span><span class="amount-high">$5,000</span></div></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="breakdown-section">
+          <h3 class="section-title"><span class="section-icon">🏠</span>Annual Ongoing Support</h3>
+          <table class="breakdown-table">
+            <thead><tr><th>Item</th><th>Annual Cost Range (USD)</th></tr></thead>
+            <tbody>
+              <tr><td>Housing Allowance (3BR)</td><td><div class="amount-range"><span class="amount-low">$36,000</span><span class="amount-high">$54,000</span></div></td></tr>
+              <tr><td>School Tuition (Osaka YMCA Int'l)</td><td><div class="amount-range"><span class="amount-low">$18,000</span><span class="amount-high">$22,000</span></div></td></tr>
+              <tr><td>School Bus/Transportation</td><td><div class="amount-range"><span class="amount-low">$2,000</span><span class="amount-high">$3,500</span></div></td></tr>
+              <tr><td>School Extras</td><td><div class="amount-range"><span class="amount-low">$1,500</span><span class="amount-high">$3,000</span></div></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="timeline-note"><h4>⏰ Timeline Target</h4><p>Late November / Early December start date</p></div>
+        <div class="key-considerations">
+          <h3>📋 Key Considerations</h3>
+          <ul>
+            <li>Housing locations: Konohana-ku, Minato-ku, or Kita-ku (near Universal Studios Japan)</li>
+            <li>School: Osaka YMCA International School enrollment for 10-year-old son</li>
+            <li>Pet quarantine requires 180-day lead time - initiate process immediately!</li>
+            <li>Includes comprehensive tax consultation for Australia-Japan transition</li>
+            <li>Full family support with language and cultural orientation programs</li>
+            <li>Ongoing support structure includes both housing and education</li>
+            <li>Home finding service to identify suitable 3-bedroom accommodation</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Estimate 2 -->
+    <div id="estimate2" class="estimate-page">
+      <div class="estimate-card">
+        <div class="estimate-header">
+          <h2 class="estimate-title">Excluding Ongoing School and Housing Support</h2>
+          <p class="estimate-description">All relocation services but no ongoing school or housing support</p>
+        </div>
+        <div class="summary-boxes">
+          <div class="summary-box"><div class="summary-label">Low Range</div><div class="summary-amount">$43,500</div></div>
+          <div class="summary-box"><div class="summary-label">High Range</div><div class="summary-amount">$78,500</div></div>
+          <div class="summary-box total"><div class="summary-label">Total Range</div><div class="summary-amount">$43.5K - $78.5K</div></div>
+        </div>
+        <div class="breakdown-section">
+          <h3 class="section-title"><span class="section-icon">✈️</span>Complete Relocation Package</h3>
+          <table class="breakdown-table">
+            <thead><tr><th>Item</th><th>Cost Range (USD)</th></tr></thead>
+            <tbody>
+              <tr><td>Household Shipping (20-30m³)</td><td><div class="amount-range"><span class="amount-low">$8,000</span><span class="amount-high">$14,000</span></div></td></tr>
+              <tr><td>Furniture Allowance (Japan)</td><td><div class="amount-range"><span class="amount-low">$5,000</span><span class="amount-high">$10,000</span></div></td></tr>
+              <tr><td>Airfare (3 people)</td><td><div class="amount-range"><span class="amount-low">$9,000</span><span class="amount-high">$15,000</span></div></td></tr>
+              <tr><td>Temporary Accommodation (1 month)</td><td><div class="amount-range"><span class="amount-low">$3,000</span><span class="amount-high">$5,000</span></div></td></tr>
+              <tr><td>Pet Relocation (1 cavoodle)</td><td><div class="amount-range"><span class="amount-low">$4,000</span><span class="amount-high">$6,000</span></div></td></tr>
+              <tr><td>Pet Quarantine & Documentation</td><td><div class="amount-range"><span class="amount-low">$1,500</span><span class="amount-high">$2,500</span></div></td></tr>
+              <tr><td>Tax Consultation (AU-JP)</td><td><div class="amount-range"><span class="amount-low">$3,000</span><span class="amount-high">$6,000</span></div></td></tr>
+              <tr><td>Cultural/Language Orientation</td><td><div class="amount-range"><span class="amount-low">$1,500</span><span class="amount-high">$3,000</span></div></td></tr>
+              <tr><td>Home Finding Service</td><td><div class="amount-range"><span class="amount-low">$3,000</span><span class="amount-high">$5,000</span></div></td></tr>
+              <tr><td>Settling-in Services</td><td><div class="amount-range"><span class="amount-low">$2,000</span><span class="amount-high">$4,000</span></div></td></tr>
+              <tr><td>School Search Assistance</td><td><div class="amount-range"><span class="amount-low">$1,000</span><span class="amount-high">$2,500</span></div></td></tr>
+              <tr><td>Transportation Setup</td><td><div class="amount-range"><span class="amount-low">$500</span><span class="amount-high">$1,500</span></div></td></tr>
+              <tr><td>Emergency Fund</td><td><div class="amount-range"><span class="amount-low">$2,000</span><span class="amount-high">$5,000</span></div></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="timeline-note"><h4>⏰ Timeline Target</h4><p>Late November / Early December start date</p></div>
+        <div class="key-considerations">
+          <h3>📋 Key Considerations</h3>
+          <ul>
+            <li>Housing and school costs to be covered separately through salary or other arrangements</li>
+            <li>Includes all essential relocation services and comprehensive setup assistance</li>
+            <li>Home finding service included to help secure suitable permanent housing</li>
+            <li>School search assistance provided (enrollment support without tuition coverage)</li>
+            <li>1 month temporary accommodation while permanent housing is secured</li>
+            <li>Full settling-in support: banking, utilities, phone, and local registrations</li>
+            <li>Pet relocation with full quarantine and documentation support</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Estimate 3 -->
+    <div id="estimate3" class="estimate-page">
+      <div class="estimate-card">
+        <div class="estimate-header">
+          <h2 class="estimate-title">Including Three Month Temporary Housing</h2>
+          <p class="estimate-description">Includes 3-month temporary housing but no ongoing school or housing support</p>
+        </div>
+        <div class="summary-boxes">
+          <div class="summary-box"><div class="summary-label">Low Range</div><div class="summary-amount">$49,500</div></div>
+          <div class="summary-box"><div class="summary-label">High Range</div><div class="summary-amount">$88,500</div></div>
+          <div class="summary-box total"><div class="summary-label">Total Range</div><div class="summary-amount">$49.5K - $88.5K</div></div>
+        </div>
+        <div class="breakdown-section">
+          <h3 class="section-title"><span class="section-icon">🏡</span>Complete Relocation with Extended Temporary Housing</h3>
+          <table class="breakdown-table">
+            <thead><tr><th>Item</th><th>Cost Range (USD)</th></tr></thead>
+            <tbody>
+              <tr><td>Household Shipping (20-30m³)</td><td><div class="amount-range"><span class="amount-low">$8,000</span><span class="amount-high">$14,000</span></div></td></tr>
+              <tr><td>Furniture Allowance (Japan)</td><td><div class="amount-range"><span class="amount-low">$5,000</span><span class="amount-high">$10,000</span></div></td></tr>
+              <tr><td>Airfare (3 people)</td><td><div class="amount-range"><span class="amount-low">$9,000</span><span class="amount-high">$15,000</span></div></td></tr>
+              <tr><td><strong>Temporary Housing (3 months)</strong></td><td><div class="amount-range"><span class="amount-low">$9,000</span><span class="amount-high">$15,000</span></div></td></tr>
+              <tr><td>Pet Relocation (1 cavoodle)</td><td><div class="amount-range"><span class="amount-low">$4,000</span><span class="amount-high">$6,000</span></div></td></tr>
+              <tr><td>Pet Quarantine & Documentation</td><td><div class="amount-range"><span class="amount-low">$1,500</span><span class="amount-high">$2,500</span></div></td></tr>
+              <tr><td>Tax Consultation (AU-JP)</td><td><div class="amount-range"><span class="amount-low">$3,000</span><span class="amount-high">$6,000</span></div></td></tr>
+              <tr><td>Cultural/Language Orientation</td><td><div class="amount-range"><span class="amount-low">$1,500</span><span class="amount-high">$3,000</span></div></td></tr>
+              <tr><td>Home Finding Service</td><td><div class="amount-range"><span class="amount-low">$3,000</span><span class="amount-high">$5,000</span></div></td></tr>
+              <tr><td>Settling-in Services</td><td><div class="amount-range"><span class="amount-low">$2,000</span><span class="amount-high">$4,000</span></div></td></tr>
+              <tr><td>School Search Assistance</td><td><div class="amount-range"><span class="amount-low">$1,000</span><span class="amount-high">$2,500</span></div></td></tr>
+              <tr><td>Transportation Setup</td><td><div class="amount-range"><span class="amount-low">$500</span><span class="amount-high">$1,500</span></div></td></tr>
+              <tr><td>Emergency Fund</td><td><div class="amount-range"><span class="amount-low">$2,000</span><span class="amount-high">$5,000</span></div></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="timeline-note"><h4>⏰ Timeline Target</h4><p>Late November / Early December start date</p></div>
+        <div class="key-considerations">
+          <h3>📋 Key Considerations</h3>
+          <ul>
+            <li>Extended 3-month temporary housing provides comfortable transition period</li>
+            <li>More time to find ideal permanent housing without rushing</li>
+            <li>Allows family to settle in and explore neighborhoods before committing</li>
+            <li>School search can be conducted more thoroughly after arrival</li>
+            <li>No ongoing housing or school support after initial 3 months</li>
+            <li>Temporary housing near Universal Studios Japan for convenient commuting</li>
+            <li>All essential relocation services and setup assistance included</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function showEstimate(num) {
+      document.querySelectorAll('.estimate-page').forEach(page => page.classList.remove('active'));
+      document.querySelectorAll('.nav-tab').forEach(tab => tab.classList.remove('active'));
+      document.getElementById('estimate' + num).classList.add('active');
+      document.querySelectorAll('.nav-tab')[num - 1].classList.add('active');
+    }
+  </script>
+</body>
+</html>
